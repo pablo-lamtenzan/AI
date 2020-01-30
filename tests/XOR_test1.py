@@ -3,6 +3,8 @@
 
 """
 In this first test the AI will solve a simple test: the XOR function
+
+HOW I FCKING INCLUDE DIR IN THIS FCKING SHIT ????
 """
 
 import numpy as np
