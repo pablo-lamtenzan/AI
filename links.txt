@@ -1,7 +1,8 @@
 
 # There is the index about te links used in this lib implemetation
 
-#Test1 : math explemantion for a simple XOR example using a reural network
+#Test1 : math explemantion for a simple XOR example using a neural network
 https://medium.com/datadriveninvestor/math-neural-network-from-scratch-in-python-d6da9f29ce65
 
-#Test2 : 
+#Test2 : genetic implementation of a snake game, new genetic fct for the lib
+https://towardsdatascience.com/slitherin-solving-the-classic-game-of-snake-with-ai-part-3-genetic-evolution-33186e6be110
