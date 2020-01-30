@@ -17,7 +17,7 @@ Class train :
     def Cost_fct(theta, x, y) :
         _len = len(y)
         predict = x.dot(theta) # predicted values 
-        cost = (1 / 2 * m) * np.sum(np.square(predict - y)) # tipical mean quad error eq 
+        cost = (1 / 2 * m) * np.sum(np.square(predict - y)) # tipical mean quad error eq | 2 * m | m = ?
         return (cost)
 
     def GradientDescent(theta, x, y, learnig_rate, it) : #this is a example for linear regresion
