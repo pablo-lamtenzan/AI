@@ -12,7 +12,7 @@ class FCLayer(Layer) :
         self.weight = np.random.rand(input_size, output_size) - 0.5
         self.bias = np.random.rand(1, output_size) - 0.5
         """ weith and bias is more or less "random" in the init but the value
-            will be corrected during the trining """
+            will be corrected during the training """
 
     def forward_propagation(self, input_data) :
         self.input = input_data
