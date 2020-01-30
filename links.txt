@@ -1,0 +1,7 @@
+
+# There is the index about te links used in this lib implemetation
+
+#Test1 : math explemantion for a simple XOR example using a reural network
+https://medium.com/datadriveninvestor/math-neural-network-from-scratch-in-python-d6da9f29ce65
+
+#Test2 : 
