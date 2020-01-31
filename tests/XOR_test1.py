@@ -8,7 +8,9 @@ HOW I FCKING INCLUDE DIR IN THIS FCKING SHIT ????
 """
 
 import numpy as np
+import sys
 
+sys.path.append('../libAI/NN')
 from Network import Network
 from Fully_connected_layer import FCLayer
 from Activation_layer import ActivationLayer
