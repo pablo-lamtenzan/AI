@@ -129,9 +129,8 @@ class Autoencoder(object) :
                 self.b2 -= self.alpha * gradb2
 
                 grad_sum = gradW1.sum() + gradW2.sum() + gradb1.sum() + gradb2.sum()
-            temp = epochs
-            print temp
-            temp -= 1
+
+            print epoch
             print (1.0 / batch_num) * total_cost
 
     # dump final weight and bios
