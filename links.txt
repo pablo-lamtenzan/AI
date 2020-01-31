@@ -6,3 +6,7 @@ https://medium.com/datadriveninvestor/math-neural-network-from-scratch-in-python
 
 #Test2 : genetic implementation of a snake game, new genetic fct for the lib
 https://towardsdatascience.com/slitherin-solving-the-classic-game-of-snake-with-ai-part-3-genetic-evolution-33186e6be110
+
+#Test3 : Autoencoder
+https://gist.github.com/kiyukuta/6170759
+

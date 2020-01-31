@@ -6,7 +6,7 @@
 #    By: plamtenz <plamtenz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 07:11:03 by plamtenz          #+#    #+#              #
-#    Updated: 2020/01/31 08:23:27 by plamtenz         ###   ########.fr        #
+#    Updated: 2020/01/31 09:11:40 by plamtenz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,11 @@ class Estimate_price(Train) :
     def read_thetas(self, theta_path) :
         if os.path.isfile(theta_path) :
             with open(theta_path, 'r') as thetasfile :
-                ret = csv.reader(thetasfile, delimiter = ',')
+                file = csv.reader(thetasfile, delimiter = ',')
                 """ if path to file exist, open and name it, then read it"""
-                for line in file :
-                    self.t0 = float(line[0])
-                    self.t1 = float(line[1])
+                for split in file :
+                    self.t0 = float(split[0])
+                    self.t1 = float(split[1])
                     break # this break and this for seems not necesarry
     
     # user interact with the program givin a mileage
@@ -57,9 +57,9 @@ class Estimate_price(Train) :
                 print('Not a value value for the mileage. ')
 
     # estimated price of mileage = t0 + (t1 * mileage)
-    def price_estimation(self, prices) :
-        final_price = t0 + (self.t1 * self.normalize(self.mileages, self.mileage)
-        return (self.denormalize(prices, final_price))
+    def price_estimation(self) :
+        final_price = self.t0 + (self.t1 * self.normalize(self.mileages, self.mileage)
+        return (self.denormalize(self.prices, final_price))
         
 
 
@@ -72,9 +72,9 @@ if __name__ == "__main__" :
     # 2nd ask to user to put some mileages values
     x.get_data_from_user()
     # 3rd get all data to have some values to learn and correct the error
-    mileages, prices = getDATA('data.csv')
+    x.get_data_from_file('data.csv')
     # 4th calc price 
-    price = mt.ceil(x.price_estimation(prices)) # ceil(x) return smallest integral >= to x
+    x.price = mt.ceil(x.price_estimation(prices)) # ceil(x) return smallest integral >= to x
     
     # 5th estimate woth
     if price <= 0 :

@@ -9,6 +9,8 @@
 # data link in MNIST : wget http://deeplearning.net/data/mnist/mnist.pkl.gz
 # compilation : python autoencoder.py 100 -e 100 -b 20 -v
 
+""" ---> run it in goinfre, 100 epochs took all my perso space """
+
 import numpy as np
 import argparse
 import cPickle as pickle
