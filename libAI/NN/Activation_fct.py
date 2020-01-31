@@ -16,7 +16,7 @@ def relu_p(x) :
     return 1 if x >= 0 else 0 # relu primitive
 
 def sigmoid(x) :
-    return 1 / 1 + np.exp(-x) # sigmoid(x) = 1 / (1 + exp(-x))
+    return 1 / (1 + np.exp(-x)) # sigmoid(x) = 1 / (1 + exp(-x))
 """
 def sigmoid_p(x)
     return sigmoid(x) * (1 - sigmoid(x)) # sigmoid primitive

@@ -165,7 +165,3 @@ class DNNGeneticEvolutionTrainer : """inherit_something"""
             population = new_population
 
             self.generartion += 1
-
-
-
-
