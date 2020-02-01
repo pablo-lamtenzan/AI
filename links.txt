@@ -10,3 +10,7 @@ https://towardsdatascience.com/slitherin-solving-the-classic-game-of-snake-with-
 #Test3 : Autoencoder
 https://gist.github.com/kiyukuta/6170759
 
+#Test4 : Continuous genetic lib
+https://towardsdatascience.com/continuous-genetic-algorithm-from-scratch-with-python-ff29deedd099
+
+
