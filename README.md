@@ -1,4 +1,6 @@
-# AI library implemented from scrach, doing AI projects to learn diferents kinds of Neural Networks and 
+# AI projects and LibAI
+
+AI library implemented from scrach, doing AI projects to learn diferents kinds of Neural Networks and 
 adding at the same time functions to the lib.
 
 For the moment the lib is codded in Python, but in the future it will be in C++ and probally in C.
