@@ -1,9 +1,4 @@
 
-""" actually working with 
-https://towardsdatascience.com/continuous-genetic-algorithm-from-scratch-with-python-ff29deedd099
-
-"""
-
 # Conitious = use of floating numbers or integer instead of binary
 # This algo comes from the MIT, thaks to Jhon H.Holland for this good shit
 
