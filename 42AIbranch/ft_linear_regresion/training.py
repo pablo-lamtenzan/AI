@@ -1,21 +1,21 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    test.py                                            :+:      :+:    :+:    #
+#    training.py                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: plamtenz <plamtenz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 08:34:18 by plamtenz          #+#    #+#              #
-#    Updated: 2020/01/31 10:58:21 by plamtenz         ###   ########.fr        #
+#    Updated: 2020/02/01 12:22:10 by plamtenz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-import maht as mt
+import math as mt
 import csv
 import matplotlib.pyplot as plt
-import tools 
+# import tools 
 
-class Train :
+class Train() :
     def __init__(self) :
         self.t0 = 0.0
         self.t1 = 0.0
@@ -62,7 +62,8 @@ class Train :
         for price in self.prices :
             y.append(self.normalize(price, self.prices))
 
-        return x, y
+        self.mileages = x
+        self.prices = y
 
     # (1 / n) * (sum(y_pred - y_true) ** 2)
     # used to calc error rate
@@ -88,15 +89,15 @@ class Train :
                 dt1 += ((self.t1 * mileage + self.t0) - price) * mileage
 
             # uptate our thetas
-            self.t0 -= dt0 / len(mileages) * learning_rate
-            self.t1 -= dt1 / len(prices) * learning_rate
+            self.t0 -= dt0 / len(self.mileages) * learning_rate
+            self.t1 -= dt1 / len(self.prices) * learning_rate
 
             # calc error rate
             loss = self.cuadratic_mean_error()
-            learning_rate = boldDriver(loss, lossHistory, dt0, dt1, learning_rate, len(mileages))
+            learning_rate = self.boldDriver(loss, lossHistory, dt0, dt1, learning_rate, len(self.mileages))
             lossHistory.append(loss)
-            t0History.append(t0)
-            t1History.append(t1)
+            t0History.append(self.t0)
+            t1History.append(self.t1)
 
         return lossHistory, t0History, t1History
 
@@ -117,16 +118,16 @@ class Train :
     def store_file_data(self, file_path) :
         # open with write rights
         with open(file_path, 'w') as csvfile :
-            wfile = csv.writer(csvfile, demiliter = ',', quotechar = '"', quoting = cvs.QUOTE_MINIMAL)
+            wfile = csv.writer(csvfile, demiliter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
             wfile.writerow([self.t0, self.t1])
 
     def display_graph(self, lossHistory, t0History, t1History) :
-        x = [float(min(self.mileages)), float(max(mileages))]
+        x = [float(min(self.mileages)), float(max(self.mileages))]
         y = []
 
         # take mean
         for elem in x :
-            elem = t1 * self.normalize(self.mileages, elem) + self.t0
+            elem = self.t1 * self.normalize(self.mileages, elem) + self.t0
             y.append(self.denormalize(elem))
 
         plt.figure(1) # new figure management
@@ -153,14 +154,14 @@ class Train :
 
 if __name__ == '__main__' :
 
-    x = Train
+    x = Train()
     learning_rate = 0.1 # can put this values in __init__()
     epochs = 100
 
     # 1st parse data of the given file
     x.get_data_from_file('data.csv')
     # 2nd normalize this data
-    self.mileages, self.price = x.normalizeData() """ can rewrite this better in fct """
+    x.normalizeData()
     # calc error and optimize
     lossHistory, t0History, t1History = x.gradientDescent(learning_rate, epochs)
     # store opimized thetas
