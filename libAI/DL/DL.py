@@ -1,6 +1,28 @@
 
 import numpy as np
 
+""" 
+TO DO :
+
+- All DO TO writen in this file
+- Cross Entropy product in loss
+- Add all existing activation function
+- Add an independent Genetic Lib
+- Add CNN lib
+- Add RNN lib
+- Add QL and DQL lib
+- Add all optimizers
+- Add loss ftc
+- Implement an kind of .h for only one inclusion
+- Reimplement numpy
+- Implement data graph visualition lib
+
+- End snake (includes)
+- Repair AE
+- ...
+
+"""
+
 
 """----------------------------------------------------  DEPENDECIES  ----------------------------------------"""
 
@@ -120,6 +142,32 @@ class ReLU(Function) :
     # ReLU prmitive
     def backward(self, dY) :
         return dY * (self.activated > 0)
+
+class LeakyReLU(Function) : """in the future i could join all relu fct in 1"""
+    def __init__(self) :
+        self.type = 'activation'
+
+    # leaky ReLU as activation fct
+    def forward(self, x) :
+        if x >= 0 :
+            return x
+        else :
+            return 0.01 * x
+
+    def backward(self, x) :
+        return x # TO DO
+
+class PRelu(Function) : # parametric ReLU
+    def __init__(self) :
+        self.type = 'activation'
+
+    def forward(self, x) :
+        return x
+
+    def backward(self, x) :
+        return x # TO DO
+
+
 
 class Tanh(Function) :
     def __init__(self) :
