@@ -4,6 +4,9 @@ import numpy as np
 """ 
 TO DO :
 
+- Merge classes adding params
+- Repair segfault linear regresion
+
 - All DO TO writen in this file
 - Cross Entropy product in loss
 - Add all existing activation function
@@ -16,10 +19,19 @@ TO DO :
 - Implement an kind of .h for only one inclusion
 - Reimplement numpy
 - Implement data graph visualition lib
+- Implement residual neural network
+
+- When will finished a man
 
 - End snake (includes)
 - Repair AE
 - ...
+
+Did :
+
+- Add Deep Learning lib base
+- Add genetic lib
+
 
 """
 
@@ -108,6 +120,7 @@ class SoftmaxWithLoss(Function) :
         grad /= len(self.target)
         return grad
 
+# mean cuadratic error
 class MSE(Function) :
     def __init__(self) :
         self.type = 'loss'
@@ -119,6 +132,79 @@ class MSE(Function) :
     # mse primitive
     def backward(self, Y_true, Y_pred) :
         return 2 * (Y_pred - Y_true) / Y_true.size
+
+# mean absolute error
+class MAE(Function) :
+    def __init__(self) :
+        self.type = 'loss'
+
+    # mae error rate
+    def forward(self, Y_true, Y_pred) :
+        return np.sum(np.absolute(Y_true - Y_pred))
+
+    def backward(self, Y_true, Y_pred) :
+        return 0 # TO DO
+
+
+class CrossEntropy(Function) :
+    def __init__(self) :
+        self.type = 'loss'
+
+    # cross entropy error rate
+    def forward(self, Y_true, Y_pred) :
+        if Y_pred == 1 :
+            return -np.log(Y_true)
+        else :
+            return -np.log(1 - Y_true)
+
+    # cross entropy primitive
+    def backward(self, Y_true, Y_pred) :
+        return 0 # TO DO
+
+# used for clasification
+class Hinge(Function) :
+    def __init__(self) :
+        self.type = 'loss'
+
+    # Hinge error rate
+    def forward(self, Y_true, Y_pred) :
+        return np.max(0, 1 - Y_true * Y_pred)
+
+    # Hinge derivative
+    def backward(self, Y_true, Y_pred) :
+        return 0 # TO DO
+
+# use for regresion, less sensitive that mse
+class Huber(Function) :
+    def __init__(self) :
+        self.type = 'loss'
+
+    # huber error rate 
+    def forward(self, Y_true, Y_pred, delta = 1) :
+        return np.where(np.abs(Y_pred - Y_true) < delta, 0.5 * (Y_pred - Y_true) ** 2,
+         delta * (np.abs(Y_pred - Y_true) - 0.5 * delta))
+
+    # huber derivative
+    def backward(self, Y_true, Y_pred, delta = 1) :
+        return 0 # TO DO
+
+# Kullback - Leibler
+class KLDivergence(Function) :
+    def __init__(self) :
+        self.type = 'loss'
+    
+    # KLD error rate
+    def forward(self, Y_true, Y_pred) :
+        return np.sum(Y_true * np.log(Y_true / Y_pred))
+
+    def backward(self, Y_pred, Y_pred) :
+        return 0 # TO DO
+
+
+
+
+
+
 
 
 """---------------------------------------------  ACTIVATION FUNCTIONS  ----------------------------------------"""
@@ -148,14 +234,12 @@ class LeakyReLU(Function) : """in the future i could join all relu fct in 1"""
         self.type = 'activation'
 
     # leaky ReLU as activation fct
-    def forward(self, x) :
-        if x >= 0 :
-            return x
-        else :
-            return 0.01 * x
+    def forward(self, x, alpha) :
+        return max(alpha * x, x)
 
-    def backward(self, x) :
-        return x # TO DO
+    # leaky ReLU prime
+    def backward(self, x, alpha) :
+        return 1 if x > 0 else alpha
 
 class PRelu(Function) : # parametric ReLU
     def __init__(self) :
@@ -166,6 +250,19 @@ class PRelu(Function) : # parametric ReLU
 
     def backward(self, x) :
         return x # TO DO
+
+# exponetial linear unit
+class ELU(Function) :
+    def __init__(self) :
+        self.type = 'activation'
+
+    # elu as act fct
+    def forward(self, x, alpha) :
+        return x if x >= 0 else alpha * np.exp(x) -1
+
+    # elu derivative
+    def backward(self, x, alpha) :
+        return 1 if x > 0 else alpha * np.exp(x)
 
 
 
