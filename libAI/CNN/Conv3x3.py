@@ -32,12 +32,12 @@ class Conv3x3() :
 
     # return a 3d np array with dims (h, w, nb filters)
     # input is a 2d np array
-    def forward(self, input) :
-        self.last_input = input # save input
-        h, w = input.shape
+    def forward(self, X) :
+        self.last_input = X # save input
+        h, w = X.shape
         Y = np.zeros((h - 2, w - 2, self.num_filters))
 
-        for im_regions, i, j in self.iterative_regions(input) :
+        for im_regions, i, j in self.iterative_regions(X) :
             Y[i, j] = np.sum(im_regions * self.filters, axis = (1, 2))
 
         return Y

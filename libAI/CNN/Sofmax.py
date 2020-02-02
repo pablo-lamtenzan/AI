@@ -12,15 +12,15 @@ class Softmax() :
 
     # input can be an array of any dim
     # returns 1d np array contaning the probabilities values
-    def forward(self, input) :
-        self.last_input_shape = input.shape # save shape
+    def forward(self, X) :
+        self.last_input_shape = X.shape # save shape
 
         # flatten collaps a n dim array into a n = 1 dim array
-        input = input.flatten()
-        self.last_input = input # save flatted input
+        X = X.flatten()
+        self.last_input = X # save flatted input
         input_len, nodes = self.weights.shape
 
-        totals = self.biases + np.dot(input, self.weights) 
+        totals = self.biases + np.dot(X, self.weights) 
         self.last_totals = totals # save totals
 
         """ can replace this softmax to class softmax in the lib
