@@ -197,7 +197,7 @@ class KLDivergence(Function) :
     def forward(self, Y_true, Y_pred) :
         return np.sum(Y_true * np.log(Y_true / Y_pred))
 
-    def backward(self, Y_pred, Y_pred) :
+    def backward(self, Y_true, Y_pred) :
         return 0 # TO DO
 
 
@@ -229,7 +229,7 @@ class ReLU(Function) :
     def backward(self, dY) :
         return dY * (self.activated > 0)
 
-class LeakyReLU(Function) : """in the future i could join all relu fct in 1"""
+class LeakyReLU(Function) :
     def __init__(self) :
         self.type = 'activation'
 
