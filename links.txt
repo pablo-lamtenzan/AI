@@ -13,5 +13,6 @@ https://gist.github.com/kiyukuta/6170759
 #Test4 : Continuous genetic lib
 https://towardsdatascience.com/continuous-genetic-algorithm-from-scratch-with-python-ff29deedd099
 
-Test5 : Convolutional NN
+#Test5 : Convolutional NN
 https://towardsdatascience.com/training-a-convolutional-neural-network-from-scratch-2235c2a25754
+

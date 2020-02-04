@@ -4,14 +4,16 @@ import numpy as np
 """ 
 TO DO :
 
+- test CNN
 - Merge classes adding params
 - Repair segfault linear regresion
+-
 
 - All DO TO writen in this file
 - Cross Entropy product in loss
 - Add all existing activation function
 - Add an independent Genetic Lib
-- Add CNN lib
+
 - Add RNN lib
 - Add QL and DQL lib
 - Add all optimizers
@@ -31,7 +33,7 @@ Did :
 
 - Add Deep Learning lib base
 - Add genetic lib
-
+- Add CNN lib
 
 """
 
